@@ -23,6 +23,52 @@ def github_login_register():
         
     else:
         print("Opção inválida. Por favor, escolha 1 para registrar-se ou 2 para fazer login.")
+import os
 
-# Executa a função
-github_login_register()
+# Função para armazenar dados de login em um arquivo
+def save_user_data(username, email, password):
+    with open("user_data.txt", "a") as file:
+        file.write(f"{username},{email},{password}\n")
+
+# Função para verificar se os dados de login são válidos
+def check_user_data(username, password):
+    if os.path.exists("user_data.txt"):
+        with open("user_data.txt", "r") as file:
+            for line in file:
+                stored_username, stored_email, stored_password = line.strip().split(",")
+                if stored_username == username and stored_password == password:
+                    return True
+    return False
+
+# Função principal para registro e login
+def github_login_register():
+    print("Bem-vindo ao sistema de login do GitHub!")
+    print("Escolha uma opção:")
+    print("1. Registrar-se")
+    print("2. Fazer login")
+    
+    option = input("Digite 1 ou 2: ")
+    
+    if option == "1":
+        print("Você escolheu registrar-se.")
+        username = input("Escolha um nome de usuário: ")
+        email = input("Digite seu e-mail: ")
+        password = input("Crie uma senha: ")
+        
+        # Armazenando dados do usuário
+        save_user_data(username, email, password)
+        print(f"Registro bem-sucedido! Bem-vindo, {username}!")
+        
+    elif option == "2":
+        print("Você escolheu fazer login.")
+        username = input("Digite seu nome de usuário: ")
+        password = input("Digite sua senha: ")
+        
+        # Verificando os dados do usuário
+        if check_user_data(username, password):
+            print(f"Login bem-sucedido! Bem-vindo de volta, {username}!")
+        else:
+            print("Nome de usuário ou senha incorretos.")
+        
+    else:
+        print("Opção inválida. Por favor, escolha 1 para registrar-se ou 2 para fazer login.")
