@@ -1,28 +1,3 @@
-def github_login_register():
-    print("Bem-vindo ao sistema de login do GitHub!")
-    print("Escolha uma opção:")
-    print("1. Registrar-se")
-    print("2. Fazer login")
-    
-    option = input("Digite 1 ou 2: ")
-    
-    if option == "1":
-        print("Você escolheu registrar-se.")
-        username = input("Escolha um nome de usuário: ")
-        email = input("Digite seu e-mail: ")
-        password = input("Crie uma senha: ")
-        print(f"Registro bem-sucedido! Bem-vindo, {username}!")
-        # Aqui você pode adicionar lógica para salvar os dados do usuário em um banco de dados ou arquivo.
-        
-    elif option == "2":
-        print("Você escolheu fazer login.")
-        username = input("Digite seu nome de usuário: ")
-        password = input("Digite sua senha: ")
-        # Aqui você pode adicionar lógica para verificar se os dados estão corretos.
-        print(f"Login bem-sucedido! Bem-vindo de volta, {username}!")
-        
-    else:
-        print("Opção inválida. Por favor, escolha 1 para registrar-se ou 2 para fazer login.")
 import os
 
 # Função para armazenar dados de login em um arquivo
@@ -72,3 +47,6 @@ def github_login_register():
         
     else:
         print("Opção inválida. Por favor, escolha 1 para registrar-se ou 2 para fazer login.")
+
+# Executa a função
+github_login_register()
